@@ -36,7 +36,7 @@ Since this is a custom, unpacked extension, follow these steps to install it in 
 1. Navigate to a document or slide deck on `https://app.sciastra.com/viewPdf`.
 2. Click the **SciAstra Notes Downloader** icon in your Chrome toolbar.
 3. If documents were already loaded by the browser, they will immediately appear in the list.
-4. Click the **Scan Pages** button to automatically scroll the viewer and capture all hidden/lazy-loaded slides.
+4. Click the **Scan Pages** button to automatically scroll the viewer and capture all hidden/lazy-loaded slides. (Refresh the page if it doesnt work)
 5. Use the view or download icons next to each document to save them locally!
 
 ## 🔐 Privacy & Permissions
