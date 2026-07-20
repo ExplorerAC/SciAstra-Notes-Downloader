@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SciAstra Notes Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>SciAstra Notes</h1>
+    <button id="scan-btn" class="primary-btn">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2v4a2 2 0 0 0 2 2h4l-6-6Zm2 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm4.3 8.7-2.9-2.9A5.96 5.96 0 0 0 16 12a6 6 0 1 0-6 6 5.96 5.96 0 0 0 3.8-1.3l2.9 2.9a1 1 0 0 0 1.4-1.4l.2.2Z"/>
+      </svg>
+      Scan Pages
+    </button>
+  </div>
+  
+  <div class="actions">
+    <button id="download-all-btn" class="secondary-btn" disabled>
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4v-2h14v2H5z"/>
+      </svg>
+      Download All
+    </button>
+    <button id="clear-btn" class="danger-btn">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 6h-4V5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1H5v2h1v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8h1V6zm-8-1h2v1h-2V5zm4 15H9V8h6v12zM10 10h1v8h-1zm2 0h1v8h-1z"/>
+      </svg>
+      Clear
+    </button>
+  </div>
+  
+  <div class="status-container">
+    <span id="status-text">Waiting for documents...</span>
+    <span id="count-badge" class="badge">0</span>
+  </div>
+
+  <ul id="url-list">
+    <!-- List items will be injected here via JS -->
+  </ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>

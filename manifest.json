@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "SciAstra Notes Downloader",
+  "version": "1.0",
+  "description": "Automates the extraction and downloading of document and slide URLs on SciAstra.",
+  "permissions": [
+    "webRequest",
+    "downloads",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://app.sciastra.com/*",
+    "*://*.amazonaws.com/*",
+    "*://*.cloudfront.net/*",
+    "blob:*",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "Downloader.png",
+    "48": "Downloader.png",
+    "128": "Downloader.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "Downloader.png",
+      "48": "Downloader.png",
+      "128": "Downloader.png"
+    }
+  }
+}
