@@ -1,58 +1,51 @@
+# SciAstra Notes Downloader — v1.1.1
+
+This build runs the scanner independently of the extension popup. Chrome may close an action popup when the page is interacted with; that no longer cancels the scan or clears captured documents. Captures are persisted in `chrome.storage.local`, and reopening the popup reloads the current results and scan state. The scanner no longer uses a blocking `alert()` when it finishes.
+
 <div align="center">
   <img src="Downloader.png" alt="SciAstra Notes Downloader Logo" width="128" height="128" />
   <h1>SciAstra Notes Downloader</h1>
-  <p>A sleek, automated Chrome Extension to effortlessly extract and download documents and lecture slides from SciAstra.</p>
+  <p>A Chrome extension for capturing and downloading document/page resources loaded by the SciAstra web viewer.</p>
 </div>
 
-## 🚀 Overview
+## What changed in v1.1
 
-**SciAstra Notes Downloader** is a custom Google Chrome Extension built to automate the tedious process of digging through the browser's Network tab to extract PDFs and slide images. 
+The original extension identified files mostly by looking for `.pdf`, `.jpg`, `.png`, etc. in the URL. That is fragile because modern document viewers commonly use signed or extensionless URLs.
 
-Whether the viewer lazily loads images or fetches data from AWS S3, this extension intercepts the network traffic natively and presents it to you in a beautiful, easy-to-use interface.
+Version 1.1 adds:
 
-## ✨ Features
+- Response `Content-Type` detection (`application/pdf`, `image/*`, etc.).
+- Support for extensionless/signed AWS, CloudFront and SciAstra resources.
+- DOM resource discovery (`img`, `iframe`, `embed`, `object`, `source`).
+- Performance resource discovery through `PerformanceResourceTiming`.
+- Lightweight fetch/XHR URL observation.
+- A more robust multi-container lazy-load scanner.
+- Resource metadata and better automatic filenames.
+- Duplicate filtering.
+- More reliable bulk downloads.
+- Backward compatibility with the old string-only session format.
 
-- **Network Interception**: Automatically detects and captures URLs for PDFs, images (`.png`, `.jpeg`), and AWS S3 blobs loaded by the SciAstra viewer.
-- **Auto-Scroll & Scan**: A one-click solution that automatically scrolls through the slide deck, forcing the browser to load all pages so you don't have to scroll manually.
-- **Preview & Download**: 
-  - 👁️ **View**: Preview captured slides or documents in a new tab before saving.
-  - ⬇️ **Download**: Save individual files instantly.
-  - 📦 **Download All**: Bulk-download all discovered documents with one click.
-- **Premium UI**: Features a modern, dark-mode, glassmorphism interface built with Vanilla CSS.
+## Installation
 
-## 🛠️ Installation
+1. Open `chrome://extensions/` in Chrome.
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the folder containing `manifest.json`.
+5. Navigate to a SciAstra document/notes viewer.
+6. Open the extension and press **Scan Pages**.
 
-Since this is a custom, unpacked extension, follow these steps to install it in your browser:
+If you already had an older unpacked copy installed, remove/replace it or use **Reload** after replacing the files.
 
-1. Clone or download this repository to your local machine.
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. In the top right corner, turn on **Developer mode**.
-4. Click the **Load unpacked** button in the top left corner.
-5. Select the folder containing this repository (the folder containing `manifest.json`).
-6. *Optional*: Pin the extension to your Chrome toolbar for quick access!
+## Notes
 
-## 📖 How to Use
+The extension captures URLs for resources already made available to the browser. It does not bypass authentication, DRM, paywalls, or server-side access controls.
 
-1. Navigate to a document or slide deck on `https://app.sciastra.com/viewPdf`.
-2. Click the **SciAstra Notes Downloader** icon in your Chrome toolbar.
-3. If documents were already loaded by the browser, they will immediately appear in the list.
-4. Click the **Scan Pages** button to automatically scroll the viewer and capture all hidden/lazy-loaded slides. (Refresh the page if it doesnt work)
-5. Use the view or download icons next to each document to save them locally!
+Some authenticated resources may expire quickly because their URLs are signed. If a captured resource stops working, scan again to obtain a fresh URL.
 
-## 🔐 Privacy & Permissions
+## Privacy
 
-This extension is built with privacy in mind. It uses **Manifest V3** and its permissions are strictly scoped to:
-- `*://app.sciastra.com/*` - The extension only operates on the specific target domain.
-- **Storage** - Only uses `session` storage to keep track of URLs temporarily while the tab is open.
-- **No data is ever sent to external servers.**
+Captured resource metadata is kept in Chrome session storage for the current tab. The extension does not send captured URLs to an external server.
 
-## 💻 Tech Stack
+## Usage
 
-- **HTML/CSS/JS**: Vanilla web technologies with no heavy frameworks.
-- **Chrome Extensions API**: `webRequest`, `scripting`, `downloads`, `activeTab`.
-
-## ⚠️ Legal & Usage Disclaimer
-
-- **Personal Use Only**: The documents and slides downloaded using this extension are intended strictly for personal educational use (e.g., keeping local copies or printing them for personal study).
-- **No Redistribution**: You are strictly prohibited from sharing, uploading, or redistributing the downloaded notes, slides, or documents on any public platforms, social media, or with unauthorized individuals. 
-- **Not Affiliated**: This extension is an independent tool built for personal productivity and is not affiliated with, maintained, or endorsed by SciAstra. Please respect the intellectual property of the content creators.
+Use downloaded materials only where you have permission to do so. Respect SciAstra's terms and the copyright of the notes/content creators.

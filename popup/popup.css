@@ -229,3 +229,14 @@ li:hover {
   height: 16px;
   fill: currentColor;
 }
+
+
+/* v1.1 status/scanning polish */
+#scan-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+#url-list:empty {
+  min-height: 8px;
+}

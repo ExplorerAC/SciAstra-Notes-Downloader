@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "SciAstra Notes Downloader",
-  "version": "1.0",
-  "description": "Automates the extraction and downloading of document and slide URLs on SciAstra.",
+  "version": "1.1.1",
+  "description": "Capture and download SciAstra PDF and image note resources, including signed and extensionless viewer URLs.",
   "permissions": [
     "webRequest",
     "downloads",
