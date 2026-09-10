@@ -24,6 +24,7 @@ Version 1.1 adds:
 - Duplicate filtering.
 - More reliable bulk downloads.
 - Backward compatibility with the old string-only session format.
+- **Fresh new pure black dark mode aesthetic for the popup UI.**
 
 ## Installation
 
