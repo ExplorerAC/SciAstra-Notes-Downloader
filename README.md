@@ -1,4 +1,4 @@
-# SciAstra Notes Downloader — v1.1.1
+# SciAstra Notes Downloader — v2.0.0
 
 This build runs the scanner independently of the extension popup. Chrome may close an action popup when the page is interacted with; that no longer cancels the scan or clears captured documents. Captures are persisted in `chrome.storage.local`, and reopening the popup reloads the current results and scan state. The scanner no longer uses a blocking `alert()` when it finishes.
 
@@ -8,12 +8,13 @@ This build runs the scanner independently of the extension popup. Chrome may clo
   <p>A Chrome extension for capturing and downloading document/page resources loaded by the SciAstra web viewer.</p>
 </div>
 
-## What changed in v1.1
+## What changed in v2.0.0
 
 The original extension identified files mostly by looking for `.pdf`, `.jpg`, `.png`, etc. in the URL. That is fragile because modern document viewers commonly use signed or extensionless URLs.
 
-Version 1.1 adds:
+Version 2.0.0 adds:
 
+- **New Logo:** A cool new `Downloader.png` representing the premium aesthetic.
 - Response `Content-Type` detection (`application/pdf`, `image/*`, etc.).
 - Support for extensionless/signed AWS, CloudFront and SciAstra resources.
 - DOM resource discovery (`img`, `iframe`, `embed`, `object`, `source`).
